@@ -1,0 +1,61 @@
+/*The snippet fixes the multiple issues of admonition plugin: Boder style. The border style can be enabled in Style Settings > Blue Topaz > For Plugin > Admonition.*/
+
+  body.border-callout-style .callout {
+    --callout-radius: 2px;
+    border-left: solid 4px rgb(var(--callout-color));
+  }
+  
+  body.border-callout-style .callout .callout-title {
+    padding: 6px;
+    background-color: rgba(var(--callout-color), 0.4);
+  }
+
+  body.border-callout-style .callout .callout-content {
+    margin-bottom: 0px; /*Fix the bottom margin is blank*/
+    background-color: rgba(var(--callout-color), 0.1);
+  }
+
+
+  body.border-callout-style .callout .callout-content p{
+    margin: 16px 0px; /*Fix the top margin is omitted, causing reading mode and live-preview is different.*/
+  }
+
+/* 
+The following is done for personal aesthetic. 
+
+Fix the margin issue of contents to a suitable value, which by default should have 16px in both top margin and bottom margin. 
+*/
+
+  /* Paragraph issue */
+  body.border-callout-style .callout .callout-content p:first-of-type{
+    margin: 0px 0px 16px; /*Adjust the top margin of the first paragraph in callout, to make it look good*/
+  }
+
+  body.border-callout-style .callout .callout-content p:last-of-type{
+    margin: 16px 0px 0px; /*Adjust the bottom margin of the last paragraph in callout, to make it look good*/
+  }
+
+  body.border-callout-style .callout .callout-content p:only-of-type{
+    margin: 0px 0px; /* Apply the same margin if there's only one paragraph */
+  }
+
+  body.border-callout-style .callout .callout-content p:has(+ ul) {
+    margin-bottom: 0px !important; /* Remove bottom margin from <p> if followed by <ul> for bullet list and number list */
+  }
+
+  /* Child-callout issue */
+  body.border-callout-style .callout .admonition:first-child{
+    margin: 8px 0px 16px; /* Adjust the top margin of the first child-callout in admonition-parent callout, to make it look good */
+  }
+
+  body.border-callout-style .callout .admonition{
+    margin: 16px 0px; /* Adjust both the top margin and bottom margin of the child-callouts in admonition-parent callout, to make it look good */
+  }
+
+  body.border-callout-style .callout .admonition:last-child{
+    margin: 16px 0px 8px; /* Adjust the bottom margin of the last child-callout in admonition-parent callout, to make it look good */
+  }
+
+  body.border-callout-style .callout .admonition:only-child{
+    margin: 8px 0px; /* Apply the same margin if there's only one child-callout in admonition-parent callout */
+  }
